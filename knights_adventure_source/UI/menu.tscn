@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/menu.gd" type="Script" id=1]
+[ext_resource path="res://UI/prstart.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/prstartFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_left = 4.0
+
+[node name="menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -18.0
+margin_right = 48.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Button" parent="VBoxContainer"]
+margin_right = 96.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+flat = true
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+margin_top = 26.0
+margin_right = 96.0
+margin_bottom = 48.0
+focus_neighbour_bottom = NodePath("../../CheckBox")
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+flat = true
+
+[node name="CheckBox" type="CheckBox" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -112.0
+margin_top = -28.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+pressed = true
+text = "music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.0
+margin_top = 16.0
+margin_right = 144.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "knight's adventure"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]

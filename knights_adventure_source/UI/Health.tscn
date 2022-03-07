@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Health.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/hearts/heart_empty.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/hearts/heart_full.png" type="Texture" id=3]
+[ext_resource path="res://sound/health_gain.wav" type="AudioStream" id=4]
+
+
+[node name="Health" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heartEmpty" type="TextureRect" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 22.0
+margin_bottom = 22.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heartFull" type="TextureRect" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 22.0
+margin_bottom = 22.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

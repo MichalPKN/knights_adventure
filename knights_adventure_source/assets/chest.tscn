@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://enemy/resources/playerDetection.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=2]
+[ext_resource path="res://assets/chest.gd" type="Script" id=3]
+[ext_resource path="res://sound/chest.wav" type="AudioStream" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 304, 288, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 288, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 336, 288, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": false,
+"name": "open",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 16 )
+
+[node name="chest" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "open"
+centered = false
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+centered = false
+vframes = 3
+hframes = 3
+region_enabled = true
+region_rect = Rect2( 304, 288, 48, 48 )
+
+[node name="playerDetection" parent="." instance=ExtResource( 1 )]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="playerDetection" index="0"]
+position = Vector2( 8, 8 )
+shape = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[editable path="playerDetection"]
